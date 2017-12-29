@@ -25,9 +25,8 @@
                                     <constraint firstAttribute="height" constant="200" id="ze8-Sf-2aZ"/>
                                 </constraints>
                             </imageView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kdm-AP-PgZ">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kdm-AP-PgZ">
+                                <rect key="frame" x="0.0" y="612" width="375" height="44"/>
                                 <items>
                                     <barButtonItem title="Library" id="VgM-CV-9fq" userLabel="Library">
                                         <connections>
@@ -42,17 +41,40 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Bottom Text" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tpF-DF-XVI">
+                                <rect key="frame" x="87" y="487" width="200" height="48"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Top Text" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5x3-mE-7bH">
+                                <rect key="frame" x="87" y="116" width="200" height="48"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Kdm-AP-PgZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2v6-4D-c70"/>
+                            <constraint firstItem="tpF-DF-XVI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="3FF-Cc-MQ6"/>
+                            <constraint firstItem="5x3-mE-7bH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="96" id="6CV-Cc-QoL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tpF-DF-XVI" secondAttribute="trailing" constant="88" id="Ick-yO-59d"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5x3-mE-7bH" secondAttribute="trailing" constant="88" id="JDo-Zk-iPh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Kdm-AP-PgZ" secondAttribute="bottom" constant="11" id="WA5-0q-AeS"/>
                             <constraint firstItem="ZwG-4c-7aT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="WZg-hA-OJE"/>
+                            <constraint firstItem="Kdm-AP-PgZ" firstAttribute="centerX" secondItem="tpF-DF-XVI" secondAttribute="centerX" id="fuw-ew-2YK"/>
+                            <constraint firstItem="5x3-mE-7bH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="inc-89-0PE"/>
                             <constraint firstItem="ZwG-4c-7aT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rY9-9C-DQc"/>
+                            <constraint firstItem="Kdm-AP-PgZ" firstAttribute="top" secondItem="tpF-DF-XVI" secondAttribute="bottom" constant="77" id="uqE-xr-n0J"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="bottomTextField" destination="tpF-DF-XVI" id="bdG-nc-hvG"/>
                         <outlet property="cameraButton" destination="u1O-2z-EKw" id="U5Z-W0-pMj"/>
                         <outlet property="imagePickerView" destination="ZwG-4c-7aT" id="PMq-ec-DF3"/>
+                        <outlet property="topTextField" destination="5x3-mE-7bH" id="COk-hw-S6G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
