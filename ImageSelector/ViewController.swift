@@ -17,20 +17,22 @@ UINavigationControllerDelegate {
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
     }
     
+    //added functionality for photo album
     @IBAction func imagePickerButtonPressed(_ sender: Any) {
         //image picker view
         let pickerController = UIImagePickerController()
         //sets delefate for picker view
         pickerController.delegate = self
+        pickerController.sourceType = .photoLibrary
         present(pickerController, animated: true, completion: nil)
     }
     
     //added functionaltiy for camera
     @IBAction func cameraPickerPuttonPressed(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        present(imagePicker, animated: true, completion: nil)
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .camera
+            present(imagePicker, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
