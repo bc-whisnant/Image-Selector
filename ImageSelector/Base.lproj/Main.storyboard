@@ -29,9 +29,15 @@
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Pick" id="VgM-CV-9fq">
+                                    <barButtonItem title="Library" id="VgM-CV-9fq" userLabel="Library">
                                         <connections>
                                             <action selector="imagePickerButtonPressed:" destination="BYZ-38-t0r" id="5GF-OW-lSy"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="209" style="plain" systemItem="fixedSpace" id="v2c-06-USb"/>
+                                    <barButtonItem title="Camera" id="u1O-2z-EKw">
+                                        <connections>
+                                            <action selector="cameraPickerPuttonPressed:" destination="BYZ-38-t0r" id="3WX-5s-aSx"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -45,11 +51,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="cameraButton" destination="u1O-2z-EKw" id="U5Z-W0-pMj"/>
                         <outlet property="imagePickerView" destination="ZwG-4c-7aT" id="PMq-ec-DF3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="24.800000000000001" y="31.934032983508249"/>
         </scene>
     </scenes>
 </document>

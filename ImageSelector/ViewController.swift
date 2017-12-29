@@ -5,10 +5,16 @@ UINavigationControllerDelegate {
     
     @IBOutlet weak var imagePickerView: UIImageView!
     
+    @IBOutlet weak var cameraButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //if the device doesn't have a camera this will make sure the source type is disabled.
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
     }
     
     @IBAction func imagePickerButtonPressed(_ sender: Any) {
@@ -17,6 +23,14 @@ UINavigationControllerDelegate {
         //sets delefate for picker view
         pickerController.delegate = self
         present(pickerController, animated: true, completion: nil)
+    }
+    
+    //added functionaltiy for camera
+    @IBAction func cameraPickerPuttonPressed(_ sender: Any) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -36,5 +50,8 @@ UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         //print("This has been cancelled")
     }
+
+
+
     
 
