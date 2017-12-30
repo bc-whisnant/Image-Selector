@@ -1,14 +1,11 @@
 import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate,
-UINavigationControllerDelegate {
+UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
-    
-    
     @IBOutlet weak var topTextField: UITextField!
-    
     @IBOutlet weak var bottomTextField: UITextField!
     
     //added code for the text field styles
@@ -23,6 +20,8 @@ UINavigationControllerDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         topTextField.defaultTextAttributes = memeTextAttributes
         bottomTextField.defaultTextAttributes = memeTextAttributes
+        topTextField.delegate = self
+        bottomTextField.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,6 +77,11 @@ UINavigationControllerDelegate {
         view.frame.origin.y = 0 - getKeyboardHeight(notification)
     }
     
+    @objc func keyboardWillHide(_ notification:Notification) {
+        
+        view.frame.origin.y = 0
+    }
+    
     func getKeyboardHeight(_ notification:Notification) -> CGFloat {
         
         let userInfo = notification.userInfo
@@ -88,6 +92,7 @@ UINavigationControllerDelegate {
     func subscribeToKeyboardNotifications() {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
         
     }
     
@@ -97,6 +102,10 @@ UINavigationControllerDelegate {
         
     }
     
+    func textFieldShouldReturn(_ topTextField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
     
     
 }
