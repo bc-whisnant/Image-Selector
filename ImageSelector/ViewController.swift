@@ -3,10 +3,12 @@ import UIKit
 class ViewController: UIViewController, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate, UITextFieldDelegate {
     
+    //declare variables here
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
+    var memedImage: UIImage?
     
     //added code for the text field styles
     let memeTextAttributes:[String:Any] = [
@@ -105,6 +107,30 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     func textFieldShouldReturn(_ topTextField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
+    }
+    
+    //this code actually creates the meme ---> remember the struct in MemeStruct.swift!!
+    func save() {
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!,
+                        originalImage: imagePickerView.image!, memedImage: memedImage)
+    }
+    //this renders the view to an actual image
+    func generateMemedImage() -> UIImage {
+        // Hide toolbar and navbar
+        navigationController?.toolbar.isHidden = true
+        navigationController?.navigationBar.isHidden = true
+        
+        
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        // Show toolbar and navbar
+        navigationController?.toolbar.isHidden = false
+        navigationController?.navigationBar.isHidden = false
+        
+        return memedImage
     }
     
     
